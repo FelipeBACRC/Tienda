@@ -58,19 +58,19 @@ public class PruebasController {
         model.addAttribute("totalProductos", productos.size());
         return "/pruebas/consulta";
     }
-    
+
     @PostMapping("/query2")
     public String consultaQuery2(@RequestParam(value = "precioInf") double precioInf,
             @RequestParam(value = "precioSup") double precioSup, Model model) {
         var productos = productoService.metodoJPQL(precioInf, precioSup);
-        model.addAttribute("productos", productos);        
+        model.addAttribute("productos", productos);
         model.addAttribute("totalProductos", productos.size());
         model.addAttribute("precioInf", precioInf);
         model.addAttribute("precioSup", precioSup);
         return "/pruebas/consulta";
     }
-    
-     @PostMapping("/query3")
+
+    @PostMapping("/query3")
     public String consultaQuery3(@RequestParam(value = "precioInf") double precioInf,
             @RequestParam(value = "precioSup") double precioSup, Model model) {
         var productos = productoService.metodoNativo(precioInf, precioSup);
@@ -78,6 +78,16 @@ public class PruebasController {
         model.addAttribute("totalProductos", productos.size());
         model.addAttribute("precioInf", precioInf);
         model.addAttribute("precioSup", precioSup);
+        return "/pruebas/consulta";
+    }
+
+    @PostMapping("/query4")
+    public String consultaPorEstado(@RequestParam(value = "estado") boolean estado, Model model) {
+        var productos = productoService.findByActivo(estado);
+        model.addAttribute("productos", productos);
+        model.addAttribute("estado", estado);
+        model.addAttribute("totalProductos", productos.size());
+
         return "/pruebas/consulta";
     }
 

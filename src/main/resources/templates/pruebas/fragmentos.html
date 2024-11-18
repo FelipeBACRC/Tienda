@@ -154,9 +154,33 @@
                         </div>
                     </form>
                 </div>
+                <div class="col-md-3 offset-md-4">
+            <form method="POST" th:action="@{/pruebas/query4}" 
+                  class="was-validated">
+                <div class="card">                            
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="estado">[[#{producto.estado}]]</label>
+                            <select class="form-select" th:name="estado" required ="true">
+                                <option value="" disabled selected>[[#{producto.estado}]]</option>
+                                <option value="true">[[#{producto.activo}]]</option>
+                                <option value="false">[[#{producto.inactivo}]]</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> [[#{pruebas.ampliadas}]]
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div> F
 
             </div>
         </section> 
+        
+      
 
 </body>
 </html>
